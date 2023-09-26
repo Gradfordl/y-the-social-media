@@ -1,16 +1,14 @@
 import { Link } from 'react-router-dom';
 import SignUpForm from "../../components/SignUpForm/SignUpForm";
-import LoginForm from "../../components/LoginForm/LoginForm";
 
-function AuthPage(props) {
+
+function SignUpPage(props) {
   return (
     <main>
-      <h1>Log in to Y</h1>
-
+      <h1>Sign Up Page</h1>
       <SignUpForm setUser={props.setUser} />
-
-      <LoginForm setUser={props.setUser} />
+      <Link to="/">Have an account? Log in here.</Link>
     </main>
   );
 }
-export default AuthPage;
+export default SignUpPage;

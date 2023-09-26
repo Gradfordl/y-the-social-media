@@ -34,7 +34,6 @@ async function login(req, res) {
     if(!match) throw new Error ("Bad Credentials, try again");
     //if the passwords match, we want to return with the user token
     const token = createJWT(user);
-    
     res.json(token);
 
   } catch (err) {
@@ -47,7 +46,7 @@ async function login(req, res) {
 
 function checkToken (req, res) {
   // req.user will always be there for you when a token is sent
-  console.log("req.user", req.user);
+  // console.log("req.user", req.user);
   res.json(req.exp);
 }
 

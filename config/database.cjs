@@ -8,7 +8,7 @@ db.on('connected', function () {
   console.log(`Connected to ${db.name} at ${db.host}:${db.port}`);
 });
 db.on('disconnected', function () {
-  console.log(`Disconnected`);
+  console.log(`Disconnected from ${db.host}:${db.port}!!!`);
 });
 
 module.exports = db;

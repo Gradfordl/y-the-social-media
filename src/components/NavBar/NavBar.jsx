@@ -9,13 +9,14 @@ export default function NavBar({user, setUser}) {
   }
   return (
     <nav>
+      <aside>
       <h1>Welcome, {user.name}</h1>
-      <Link to="/orders">Order History</Link>
-      {/* below are options for leaving a space */}
+      <Link to="/" >HOME</Link>
       &nbsp; | {" "}
-      <Link to="/orders/new">New Order</Link>
+      <Link to="/profile">PROFILE</Link>
       <br/>
-      <Link to="" onClick={handleLogOut} >Log Out</Link>
+      <Link to="" onClick={handleLogOut} >LOG OUT</Link>
+      </aside>
     </nav>
   );
 }
