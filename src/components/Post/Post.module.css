@@ -1,0 +1,14 @@
+.post {
+    background-color: white;
+    border-radius: 10px;
+    margin: 20px;
+    padding: 10px;
+}
+p {
+    padding: 10px;
+    text-align: right;
+}
+img {
+    max-width: 50%;
+    padding: 15px;
+}

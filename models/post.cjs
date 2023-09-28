@@ -10,7 +10,7 @@ const commentSchema = new Schema(
   }
 );
 
-const questionSchema = new Schema(
+const postSchema = new Schema(
   {
     user: {
       type: Schema.Types.ObjectId,
@@ -27,6 +27,6 @@ const questionSchema = new Schema(
 );
 
 
-const Question = model('Question', questionSchema);
+const Post = model('Post', postSchema);
 
-module.exports = Question;
+module.exports = Post;

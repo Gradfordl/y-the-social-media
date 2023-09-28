@@ -15,9 +15,13 @@ export function checkToken () {
   return sendRequest(`${BASE_URL}/check-token`);
 }
 
+export function deleteUser(credentials) {
+  return sendRequest(BASE_URL, 'DELETE', credentials)
+}
+
 /*--- Helper Functions ---*/
 
-async function sendRequest(url, method = 'GET', payload = null) {
+export async function sendRequest(url, method = 'GET', payload = null) {
   // Fetch accepts an options object as the 2nd argument
   // used to include a data payload, set headers, etc.
 

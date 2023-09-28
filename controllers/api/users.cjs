@@ -5,7 +5,8 @@ const bcrypt = require("bcrypt")
 module.exports = {
   create,
   login,
-  checkToken
+  checkToken,
+  deleteUser
 };
 
 async function create(req, res) {
@@ -41,6 +42,40 @@ async function login(req, res) {
     res.status(400).json("Bad Credentials")
   }
 }
+
+//DELETE
+
+async function deleteUser(req, res) {
+  try {
+    const user = await User.findOneAndDelete({email: req.body.email});
+    if (!user) throw new Error("Email Not Found!");
+    res.json("Bye bye")
+
+  } catch (err) {
+    console.log(err)
+    res.status(400).json("try again")
+  }
+}
+
+//UPDATE
+
+// async function update(req, res) {
+//   try {
+//     const user = await User.findOneAndUpdate({email: req.body.email});
+//     if (!user) throw new Error("Email Not Found!");
+
+//     //if we find a user, now compare password using bcrypt
+//     //1st arg is the plain text password just entered 2nd arg is encrypted user pw from db
+//     const match = await bcrypt.compare(req.body.password, user.password);
+//     if(!match) throw new Error ("Bad Credentials, try again");
+//     const token = createJWT(user);
+//     res.json(token);
+
+//   } catch (err) {
+//     console.log(err)
+//     res.status(400).json("Bad Credentials")
+//   }
+// }
 
 //CHECK TOKEN
 

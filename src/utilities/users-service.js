@@ -59,3 +59,12 @@ export function checkToken() {
     // make it a Date object for more flexibility
     .then(dateStr => new Date(dateStr));
 }
+
+export async function deleteUser(credentials) {
+
+  await usersAPI.deleteUser(credentials);
+}
+
+// export function createPost() {
+
+// }

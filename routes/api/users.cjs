@@ -9,6 +9,8 @@ router.post("/", usersCtrl.create);
 // /api/users/login
 router.post("/login", usersCtrl.login)
 
+router.delete("/", usersCtrl.deleteUser)
+
 // GET /api/users/check-token
 //Insert ensureLoggedIn on all routes that need protecting
 router.get("/check-token", ensureLoggedIn, usersCtrl.checkToken)

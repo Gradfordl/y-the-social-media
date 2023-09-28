@@ -1,7 +1,6 @@
 require("dotenv").config();
 const express = require("express");
 const path = require("path");
-const favicon = require("serve-favicon");
 const logger = require("morgan");
 
 //connect to MongoDB (we connected to the db in database.cjs and here we are requiring the app to connect to db upon loading)
@@ -15,7 +14,6 @@ app.use(logger("dev"));
 app.use(express.json());
     //parse incoming JSON data
 
-// app.use(favicon(path.join(__dirname, 'dist', 'favicon.ico')));
 app.use(express.static(path.join(__dirname, 'dist')));
 // to serve from the production 'dist' folder. Makes dist folder a static asset to be able to give to browser for production
 
@@ -31,12 +29,15 @@ const userRouter = require("./routes/api/users.cjs")
 //Router setup
 //if request begins with /api/users, direct to user router
 app.use("/api/users", userRouter)
+//if request begins with /aip/posts, direct to post router
+const postRouter = require("./routes/api/posts.cjs")
+app.use("/api/posts", postRouter)
 
 // The following "catch all" route (note the *) is necessary
 // to return the index.html on all non-AJAX requests
-app.get('/*', function(req, res) {
-    res.sendFile(path.join(__dirname, 'dist', 'index.html'));
-  });
+// app.get('/*', function(req, res) {
+//     res.sendFile(path.join(__dirname, 'dist', 'index.html'));
+//   });
   
   
 const PORT = process.env.PORT || 3001;

@@ -6,6 +6,8 @@ import NavBar from "../../components/NavBar/NavBar.jsx";
 import { getUser } from "../../utilities/users-service";
 import ProfilePage from "../ProfilePage/ProfilePage";
 import HomePage from "../HomePage/HomePage";
+import NewPost from "../NewPost/NewPost";
+import Settings from "../Settings/Settings"
 
 function App() {
   const [user, setUser] = useState(getUser());
@@ -22,6 +24,8 @@ function App() {
           //define the route to the desired Component
           <Route path="/profile" element={<ProfilePage user={user} setUser={setUser}/>} />
           <Route path="/" element={<HomePage user={user} setUser={setUser} />} />
+          <Route path="/new-post" element={<NewPost user={user} /> }/>
+          <Route path="/settings" element={<Settings user={user} setUser={setUser}  />} />
         </Routes>
         </>
         :
