@@ -19,6 +19,10 @@ export function deleteUser(credentials) {
   return sendRequest(BASE_URL, 'DELETE', credentials)
 }
 
+export function update(credentials) {
+  return sendRequest(BASE_URL, "PUT", credentials)
+}
+
 /*--- Helper Functions ---*/
 
 export async function sendRequest(url, method = 'GET', payload = null) {

@@ -6,7 +6,8 @@ module.exports = {
   create,
   login,
   checkToken,
-  deleteUser
+  deleteUser,
+  update
 };
 
 async function create(req, res) {
@@ -59,23 +60,18 @@ async function deleteUser(req, res) {
 
 //UPDATE
 
-// async function update(req, res) {
-//   try {
-//     const user = await User.findOneAndUpdate({email: req.body.email});
-//     if (!user) throw new Error("Email Not Found!");
+async function update(req, res) {
+  try {
+    console.log(req.body)
+    const user = await User.findByIdAndUpdate(req.body.id, {name: req.body.name, email: req.body.email}, {new: true})
+    const token = createJWT(user);
+    res.json(token);
 
-//     //if we find a user, now compare password using bcrypt
-//     //1st arg is the plain text password just entered 2nd arg is encrypted user pw from db
-//     const match = await bcrypt.compare(req.body.password, user.password);
-//     if(!match) throw new Error ("Bad Credentials, try again");
-//     const token = createJWT(user);
-//     res.json(token);
-
-//   } catch (err) {
-//     console.log(err)
-//     res.status(400).json("Bad Credentials")
-//   }
-// }
+  } catch (err) {
+    console.log(err)
+    res.status(400).json("Unable to update")
+  }
+}
 
 //CHECK TOKEN
 

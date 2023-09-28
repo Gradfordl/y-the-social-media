@@ -18,6 +18,10 @@ export async function signUp(userData) {
   return getUser()
 }
 
+export async function updateUser(credentials) {
+  const updatedUser = await usersAPI.update(credentials)
+}
+
 export async function login(credentials) {
   const token = await usersAPI.login(credentials)
 
