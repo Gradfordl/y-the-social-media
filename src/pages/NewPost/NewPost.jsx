@@ -27,8 +27,8 @@ const handleSubmit = async (evt) => {
       const postData = { ...post };
       const createdPost = await createPost(postData);
       console.log(createdPost)
-      setPost(createdPost)
-      navigate("/", {state: state})
+      // setPost(createdPost)
+      navigate("/")
       
     } catch (err) {
       setError(err);

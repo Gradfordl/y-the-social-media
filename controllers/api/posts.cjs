@@ -2,12 +2,14 @@ const Post = require("../../models/post.cjs")
 const User = require("../../models/user.cjs")
 
 
+
 module.exports = {
   create,
   index,
   getUserPosts,
   deletePost,
-  updatePost
+  updatePost,
+  postComment
 };
 
 async function create(req, res) {
@@ -67,3 +69,23 @@ async function updatePost(req, res) {
     res.status(400).json("Unable to update")
   }
 }
+
+
+async function postComment(req, res) {
+  try {
+    console.log("req body text", req.body.text)
+    console.log("req.body", req.body)
+    console.log("ID", req.body.id)
+    const addComment = await Post.findByIdAndUpdate(req.body.id, {$push: {comments:req.body}}, {new: true})
+    console.log("ADDCOMMENT",addComment)
+    // const user = await User
+    // const token = createJWT(user);
+    res.json("Good job comment function");
+
+  } catch (err) {
+    console.log(err)
+    res.status(400).json("Unable to update")
+  }
+}
+
+

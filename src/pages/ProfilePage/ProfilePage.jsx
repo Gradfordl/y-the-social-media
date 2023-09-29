@@ -2,11 +2,12 @@ import { useEffect, useState } from "react";
 import * as postsService from "../../utilities/posts-service";
 import Profile from "../../components/Profile/Profile";
 import UpdatePost from "../../components/UpdatePost/UpdatePost";
+import CommentList from "../../components/CommentList/CommentList";
+import CreateComment from "../../components/CreateComment/CreateComment"
 
 export default function ProfilePage({ user, setUser }) {
-
   const [posts, setPosts] = useState([]);
-  const [toggle, setToggle] = useState(false)
+  const [toggle, setToggle] = useState(false);
 
   const handleClick = () => {
     setToggle(!toggle);
@@ -37,8 +38,6 @@ export default function ProfilePage({ user, setUser }) {
     }
   }
 
-
-
   return (
     <div>
       <h1>USER PROFILE</h1>
@@ -58,16 +57,26 @@ export default function ProfilePage({ user, setUser }) {
                   </div>
                   <div className="btn-container">
                     <a href="#">Likes ({post.likes}) </a>
-                    <a href="#">Comments {post.comments}</a>
+                    <a href="#">Comments ({post.comments.length})</a>
                   </div>
-                  
-                  <button  onClick={() => setToggle(!toggle)}>Edit Post</button>
-                  { toggle ?
-                  <div className="update-toggle" >
-                    <UpdatePost post={post}/>
-                  </div> 
-                  :
-                  ""}
+                  {/* {post.comments.length ? (
+                    <div> */}
+                      {/* <CommentList post={post} /> */}
+{/*                       
+                    </div>
+                  ) : (
+                    "No comments"
+                  )} */}
+                  <CreateComment post={post} />
+
+                  <button onClick={() => setToggle(!toggle)}>Edit Post</button>
+                  {toggle ? (
+                    <div className="update-toggle">
+                      <UpdatePost post={post} />
+                    </div>
+                  ) : (
+                    ""
+                  )}
                   <button onClick={() => deletePost(post._id)}>
                     Delete Post
                   </button>
