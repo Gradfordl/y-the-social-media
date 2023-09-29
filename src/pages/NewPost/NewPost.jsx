@@ -1,21 +1,22 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import styles from "./NewPost.module.css";
+import { useNavigate } from "react-router-dom";
 import { createPost } from "../../utilities/posts-service"
 
 export default function NewPost({ user }) {
+  const navigate = useNavigate();
   const [post, setPost] = useState({
     text: "",
-    image: ""
+    image: "",
+    user: user
   });
-  // const [error, setError] = useState("")
+  const [error, setError] = useState("")
   useEffect(() => {
     document.title = "New Post | Y";  
   }, []);
 
  function handleChange(evt){
     setPost({...post, [evt.target.name]: evt.target.value});
-    // setError("")
+    setError("")
   }
 const handleSubmit = async (evt) => {
     //need to set form fields to state and use to create post in database
@@ -27,32 +28,33 @@ const handleSubmit = async (evt) => {
       const createdPost = await createPost(postData);
       console.log(createdPost)
       setPost(createdPost)
+      navigate("/", {state: state})
+      
     } catch (err) {
-      // setError(err);
+      setError(err);
       console.log(err)
     }
   };
-
- 
-
+  
+//REDIRECT AFTER CREATING POST
   return (
     <div className="new-post">
       <div>
         <h1 className="title">Tell Us Y</h1>
       </div>
       <div>
-        <form className={styles.form} onSubmit={handleSubmit}>
+        <form  onSubmit={handleSubmit}>
           <label>Post Text: </label>
           <textarea name="text" value={post.text} rows={5} cols={50} onChange={handleChange}/>
           <br />
 
           <label>Image url (Optional): </label>
-          <input name="image" value={post.image} className={styles.input} onChange={handleChange} cols={50} />
+          <input name="image" value={post.image}  onChange={handleChange} cols={50} />
           <br />
 
           <button type="submit">
             Create Post
-          </button>
+          </button> 
         </form>
       </div>
       <br />

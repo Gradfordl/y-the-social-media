@@ -23,7 +23,7 @@ module.exports = function(req, res, next) {
       } else {
         req.user = decoded.user
       }
-      
+      // console.log(req.user)
       // If your app cares... (optional)
       req.exp = err ? null : new Date(decoded.exp * 1000);  
       return next();
