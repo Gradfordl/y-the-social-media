@@ -9,7 +9,8 @@ module.exports = {
   getUserPosts,
   deletePost,
   updatePost,
-  postComment
+  postComment,
+  updateComment
 };
 
 async function create(req, res) {
@@ -70,14 +71,27 @@ async function updatePost(req, res) {
   }
 }
 
+async function updateComment(req, res) {
+  try { //UPDATE DOCUMENT SUB ARRAY!!!
+    const updatedComment = await Post.findByIdAndUpdate(req.body.id, {$set: {"comments.$[].text" : req.body.text }} , {new: true})
+    // const user = await User
+    // const token = createJWT(user);
+    res.json("Comment updated yay");
+
+  } catch (err) {
+    console.log(err)
+    res.status(400).json("Unable to update")
+  }
+}
+
 
 async function postComment(req, res) {
   try {
-    console.log("req body text", req.body.text)
-    console.log("req.body", req.body)
-    console.log("ID", req.body.id)
+    // console.log("req body text", req.body.text)
+    // console.log("req.body", req.body)
+    // console.log("ID", req.body.id)
     const addComment = await Post.findByIdAndUpdate(req.body.id, {$push: {comments:req.body}}, {new: true})
-    console.log("ADDCOMMENT",addComment)
+    // console.log("ADDCOMMENT",addComment)
     // const user = await User
     // const token = createJWT(user);
     res.json("Good job comment function");

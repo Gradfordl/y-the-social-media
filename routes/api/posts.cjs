@@ -16,6 +16,8 @@ router.put("/", postsCtrl.updatePost)
 
 router.delete("/:id", postsCtrl.deletePost)
 
+router.put("/comments", postsCtrl.updateComment)
+
 router.post("/comments", postsCtrl.postComment)
 
 // router.get("/check-token", ensureLoggedIn, postsCtrl.checkToken)

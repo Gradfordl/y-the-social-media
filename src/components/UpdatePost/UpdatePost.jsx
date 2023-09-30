@@ -26,7 +26,7 @@ export default function UpdatePost({ post, setPost }) {
     }
   };
   return (
-    <div className="form-container">
+    <div >
       <form autoComplete="off" onSubmit={handleSubmit}>
             <label>Update Text</label>
             <input

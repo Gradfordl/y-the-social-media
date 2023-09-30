@@ -61,7 +61,7 @@ export default function ProfilePage({ user, setUser }) {
                   </div>
                   {showComment ? (
                     <div>
-                      <CommentList post={post} />
+                      <CommentList post={post} user={user} />
                     </div>
                   ) : (
                     ""

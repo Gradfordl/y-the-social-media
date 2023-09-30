@@ -7,6 +7,11 @@ export function createComment(commentData) {
   return sendRequest(`${BASE_URL}/comments`, 'POST', commentData);
 }
 
+
+export function updateComment(credentials) {
+  return sendRequest(`${BASE_URL}/comments`, 'PUT', credentials);
+}
+
 // export function getPostHistory(){
 //   return sendRequest(BASE_URL)
 // }
@@ -19,8 +24,5 @@ export function createComment(commentData) {
 //   return sendRequest(`${BASE_URL}/${postId}`, 'DELETE');
 // }
 
-// export function updatePost(credentials) {
-//   return sendRequest(BASE_URL, 'PUT', credentials);
-// }
 
 
