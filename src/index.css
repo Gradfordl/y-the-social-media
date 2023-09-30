@@ -70,3 +70,8 @@ li {
   margin: 10px;
   border: 1px dotted blue;
 }
+.comment {
+  border: 1px solid black;
+  margin: 5px;
+  width: 350px
+}

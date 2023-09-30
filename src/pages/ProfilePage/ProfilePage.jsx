@@ -3,20 +3,15 @@ import * as postsService from "../../utilities/posts-service";
 import Profile from "../../components/Profile/Profile";
 import UpdatePost from "../../components/UpdatePost/UpdatePost";
 import CommentList from "../../components/CommentList/CommentList";
-import CreateComment from "../../components/CreateComment/CreateComment"
+import CreateComment from "../../components/CreateComment/CreateComment";
 
 export default function ProfilePage({ user, setUser }) {
   const [posts, setPosts] = useState([]);
   const [toggle, setToggle] = useState(false);
-
-  const handleClick = () => {
-    setToggle(!toggle);
-  };
+  const [showComment, setShowComment] = useState(false);
 
   useEffect(() => {
     document.title = "Profile | Y";
-  }, []);
-  useEffect(() => {
     async function fetchPosts() {
       try {
         const retrievedPosts = await postsService.getUserPosts();
@@ -41,7 +36,6 @@ export default function ProfilePage({ user, setUser }) {
   return (
     <div>
       <h1>USER PROFILE</h1>
-      {/* <img src={user.image} /> */}
       <Profile user={user} />
       <ul>
         {!posts.length
@@ -49,25 +43,31 @@ export default function ProfilePage({ user, setUser }) {
           : posts.map((post) => {
               return (
                 <div className="feed" key={post._id}>
-                  <div className="img-container">
-                    {post.image ? <img src={post.image} alt="img" /> : ""}
-                  </div>
+                  {post.image ? (
+                    <div className="img-container">
+                      <img src={post.image} alt="img" />
+                    </div>
+                  ) : (
+                    ""
+                  )}
                   <div>
                     <p>{post.text}</p>
                   </div>
                   <div className="btn-container">
-                    <a href="#">Likes ({post.likes}) </a>
-                    <a href="#">Comments ({post.comments.length})</a>
+                    <button>Likes ({post.likes}) </button>
+                    <button onClick={() => setShowComment(!showComment)}>
+                      Comments ({post.comments.length})
+                    </button>
                   </div>
-                  {/* {post.comments.length ? (
-                    <div> */}
-                      {/* <CommentList post={post} /> */}
-{/*                       
+                  {showComment ? (
+                    <div>
+                      <CommentList post={post} />
                     </div>
                   ) : (
-                    "No comments"
-                  )} */}
-                  <CreateComment post={post} />
+                    ""
+                  )}
+
+                  <CreateComment post={post} user={user} />
 
                   <button onClick={() => setToggle(!toggle)}>Edit Post</button>
                   {toggle ? (

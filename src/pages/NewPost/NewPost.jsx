@@ -7,7 +7,7 @@ export default function NewPost({ user }) {
   const [post, setPost] = useState({
     text: "",
     image: "",
-    user: user
+    user: user.name
   });
   const [error, setError] = useState("")
   useEffect(() => {

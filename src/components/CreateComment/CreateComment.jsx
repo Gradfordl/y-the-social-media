@@ -1,11 +1,14 @@
 import { useState } from "react"
 import * as CommentsAPI from "../../utilities/comments-api"
+import { useNavigate } from "react-router-dom";
 
-export default function CreateComment ({post}) {
+export default function CreateComment ({post, user}) {
 
+  const navigate = useNavigate()
     const [comment, setComment] = useState({
         text: "",
-        id: post._id
+        id: post._id,
+        author: user.name
       });
 
      function handleChange(evt){
@@ -19,7 +22,7 @@ export default function CreateComment ({post}) {
           const createdComment= await CommentsAPI.createComment(comment);
           console.log(createdComment)
           // setComment(createdComment)
-          //navigate("/")
+          navigate("/")
           
         } catch (err) {
           console.log(err)
@@ -29,7 +32,7 @@ export default function CreateComment ({post}) {
     return(
         <div>
             <form onSubmit={handleSubmit}>
-                <textarea name="text" value={comment.text} onChange={handleChange}/>
+                <input name="text" value={comment.text} onChange={handleChange}/>
                 <button>Post Comment</button>
             </form>
         </div>

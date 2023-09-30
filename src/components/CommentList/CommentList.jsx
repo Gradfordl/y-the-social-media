@@ -6,11 +6,25 @@ export default function CommentList({ post }) {
 
   return (
     <div>
-      {/* {comments.length ? (
-        <div className="comment-list">BEGIN COMMENT LIST</div>
+      {comments.length ? (
+        <div className="comment-list">
+          {comments.map((comment) => {
+            return (
+              <div key={comment._id} className="comment" >
+                {comment.author ?
+                <h5>Posted by: {comment.author}</h5> 
+              : <p>no author info</p>
+              }
+                
+                <p>{comment.text}</p>
+                <p>likes ({comment.likes})</p>
+              </div>
+            );
+          })}
+        </div>
       ) : (
         "No comments"
-      )} */} HELP
+      )}
     </div>
   );
 }
