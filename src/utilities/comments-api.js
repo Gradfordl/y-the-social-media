@@ -20,9 +20,9 @@ export function updateComment(credentials) {
 //   return sendRequest(`${BASE_URL}/user-posts`)
 // }
 
-// export function deletePost(postId) {
-//   return sendRequest(`${BASE_URL}/${postId}`, 'DELETE');
-// }
+export function deleteComment(id, author, text) {
+  return sendRequest(`${BASE_URL}/comments/${id}/${author}/${text}`, 'DELETE');
+}
 
 
 
