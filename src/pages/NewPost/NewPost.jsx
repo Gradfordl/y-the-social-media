@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
-import { redirect } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { createPost } from "../../utilities/posts-service"
 
 export default function NewPost({ user }) {
+  const navigate = useNavigate()
   const [post, setPost] = useState({
     text: "",
     image: "",
@@ -21,15 +22,14 @@ export default function NewPost({ user }) {
 const handleSubmit = async (evt) => {
     //need to set form fields to state and use to create post in database
     evt.preventDefault();
-    console.log(" create post form submitted");
+    // console.log(" create post form submitted");
     try { 
 
       const postData = { ...post };
       const createdPost = await createPost(postData);
       console.log(createdPost)
-      // setPost(createdPost)
-      redirect("/")
-      
+      setPost(createdPost)
+      navigate(-1)
     } catch (err) {
       setError(err);
       console.log(error);

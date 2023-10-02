@@ -63,7 +63,7 @@ async function deleteUser(req, res) {
 async function update(req, res) {
   try {
     console.log(req.body)
-    const user = await User.findByIdAndUpdate(req.body.id, {name: req.body.name, email: req.body.email}, {new: true})
+    const user = await User.findByIdAndUpdate(req.body.id, {name: req.body.name, image: req.body.image, email: req.body.email}, {new: true})
     const token = createJWT(user);
     res.json(token);
 

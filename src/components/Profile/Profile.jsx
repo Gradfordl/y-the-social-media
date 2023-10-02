@@ -1,6 +1,6 @@
 export default function Profile({ user, setUser}) {
 
-    const date = user.createdAt
+    // const date = user.createdAt.toLocaleDateString()
 
     return (
         <div className="profile-insert" >
@@ -8,7 +8,7 @@ export default function Profile({ user, setUser}) {
                 {user.image ? <img src={user.image} className="profile-pic"/> : ""}
             </div>
             <h2>{user.name}'s profile</h2>
-            <p>Member since: {date}</p>
+            {/* <p>Member since: {date}</p> */}
         </div>
     )
 }

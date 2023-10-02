@@ -8,15 +8,15 @@ export default function NavBar({user, setUser}) {
     setUser(null)
   }
   return (
-    <nav>
-      <ul className='topnav' >
+    <nav className='topnav' >
+      <ul >
       <h4>Hey, {user.name}</h4>
-      <li><Link to="/" >HOME</Link></li>{" "}
-      <li><Link to="/profile">PROFILE</Link></li>{" "}
-      <li><Link to="/new-post">TELL US Y</Link></li>{" "}
-      <li><Link to="/settings">SETTINGS</Link></li>{" "}
-      <li><Link to="/"onClick={handleLogOut} className="split" >LOG OUT</Link></li>
-      </ul>
+      <li><Link to="/" className='link' >HOME</Link></li>{" "}
+      <li><Link to="/profile" className='link'>PROFILE</Link></li>{" "}
+      <li><Link to="/new-post" className='link'>TELL US Y</Link></li>{" "}
+      <li><Link to="/settings" className='link'>SETTINGS</Link></li>{" "}
+      <li><Link to="/"onClick={handleLogOut} className="link" >LOG OUT</Link></li>
+      </ul> <br/>
     </nav>
   );
 }
