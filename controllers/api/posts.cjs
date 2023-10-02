@@ -10,6 +10,7 @@ module.exports = {
   postComment,
   updateComment,
   deleteComment,
+  // updateLikes
 };
 
 async function create(req, res) {
@@ -130,3 +131,19 @@ async function postComment(req, res) {
     res.status(400).json("Unable to update");
   }
 }
+
+// async function updateLikes(req, res) {
+//   try {
+//     const updatedPost = await Post.findByIdAndUpdate(
+//       req.body.id,
+//       { likes: req.body.likes },
+//       { new: true }
+//     );
+//     // const user = await User
+//     // const token = createJWT(user);
+//     res.json("Good job");
+//   } catch (err) {
+//     console.log(err);
+//     res.status(400).json("Unable to update");
+//   }
+// }

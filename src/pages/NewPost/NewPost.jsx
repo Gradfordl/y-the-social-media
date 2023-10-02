@@ -1,13 +1,13 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { redirect } from "react-router-dom";
 import { createPost } from "../../utilities/posts-service"
 
 export default function NewPost({ user }) {
-  const navigate = useNavigate();
   const [post, setPost] = useState({
     text: "",
     image: "",
-    user: user.name
+    author: user.name,
+    user: user
   });
   const [error, setError] = useState("")
   useEffect(() => {
@@ -28,11 +28,11 @@ const handleSubmit = async (evt) => {
       const createdPost = await createPost(postData);
       console.log(createdPost)
       // setPost(createdPost)
-      navigate("/")
+      redirect("/")
       
     } catch (err) {
       setError(err);
-      console.log(err)
+      console.log(error);
     }
   };
   

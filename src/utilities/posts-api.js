@@ -22,3 +22,7 @@ export function deletePost(postId) {
 export function updatePost(credentials) {
   return sendRequest(BASE_URL, 'PUT', credentials);
 }
+// export function updateLikes(likes) {
+//   return sendRequest(BASE_URL, 'PUT', likes);
+// }
+

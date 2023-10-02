@@ -5,6 +5,7 @@ export default function UpdateUser({ user, setUser }) {
     const [credentials, setCredentials] = useState({
         name: user.name,
         id: user._id,
+        image: user.image,
         email: user.email
     })
   const [error, setError] = useState("");
@@ -35,7 +36,15 @@ export default function UpdateUser({ user, setUser }) {
               value={credentials.name}
               onChange={handleChange}
               required
-            />
+            /> <br/>
+            <label>Update Image</label>
+            <input
+              type="text"
+              name="image"
+              value={credentials.image}
+              onChange={handleChange}
+              required
+            /><br/>
             <label>Update Email</label>
             <input
               type="email"
@@ -43,7 +52,7 @@ export default function UpdateUser({ user, setUser }) {
               value={credentials.email}
               onChange={handleChange}
               required
-            />
+            /><br/>
             <button type="submit">
               Submit Changes
             </button>

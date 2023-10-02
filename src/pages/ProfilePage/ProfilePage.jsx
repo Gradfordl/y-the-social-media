@@ -4,6 +4,7 @@ import Profile from "../../components/Profile/Profile";
 import UpdatePost from "../../components/UpdatePost/UpdatePost";
 import CommentList from "../../components/CommentList/CommentList";
 import CreateComment from "../../components/CreateComment/CreateComment";
+import LikeButton from "../../components/LikeButton/LikeButton";
 
 export default function ProfilePage({ user, setUser }) {
   const [posts, setPosts] = useState([]);
@@ -52,9 +53,10 @@ export default function ProfilePage({ user, setUser }) {
                   )}
                   <div>
                     <p>{post.text}</p>
+                    <h4>posted by: {post.author}</h4>
                   </div>
                   <div className="btn-container">
-                    <button>Likes ({post.likes}) </button>
+                    <LikeButton post={post}/>
                     <button onClick={() => setShowComment(!showComment)}>
                       Comments ({post.comments.length})
                     </button>

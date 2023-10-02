@@ -1,6 +1,7 @@
 import { useState } from "react";
-import UpdateComment from "../UpdateComent/UpdateComment";
+import UpdateComment from "../UpdateComment/UpdateComment";
 import * as commentsAPI from "../../utilities/comments-api"
+import LikeButton from "../LikeButton/LikeButton";
 
 export default function CommentList({ post, user }) {
   //get-all comments for post
@@ -30,10 +31,10 @@ export default function CommentList({ post, user }) {
                 ) : (
                   <p>no author info</p>
                 )}
-                {post._id} <br/>
-                {comment._id}
+                {/* {post._id} <br/> why the heck are my post id and comment id identical????
+                {comment._id} */}
                 <p>{comment.text}</p>
-                <p>likes ({comment.likes})</p>
+                <LikeButton post={post}/>
                 {comment.author === currentUser.name ? (
                   <div>
                     <UpdateComment comment={comment} />

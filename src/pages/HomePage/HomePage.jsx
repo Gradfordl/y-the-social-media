@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import * as postsService from "../../utilities/posts-service";
 import CommentList from "../../components/CommentList/CommentList";
 import CreateComment from "../../components/CreateComment/CreateComment";
+import LikeButton from "../../components/LikeButton/LikeButton";
 
 export default function HomePage({ user, setUser }) {
   const [posts, setPosts] = useState([]);
@@ -31,18 +32,19 @@ export default function HomePage({ user, setUser }) {
             : posts.map((post) => {
                 return (
                   <div className="feed" key={post._id}>
-                  {post.image ? (
-                    <div className="img-container">
-                      <img src={post.image} alt="img" />
-                    </div>
-                  ) : (
-                    ""
-                  )}
+                    {post.image ? (
+                      <div className="img-container">
+                        <img src={post.image} alt="img" />
+                      </div>
+                    ) : (
+                      ""
+                    )}
                     <div>
                       <p>{post.text}</p>
+                      <h4>posted by: {post.author}</h4>
                     </div>
                     <div className="btn-container">
-                      <button href="#">Likes ({post.likes}) </button>
+                      <LikeButton post={post}/>
                       <button onClick={() => setShowComment(!showComment)}>
                         Comments ({post.comments.length})
                       </button>

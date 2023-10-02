@@ -18,6 +18,8 @@ router.delete("/:id", postsCtrl.deletePost)
 
 router.delete("/comments/:id/:author/:text", postsCtrl.deleteComment)
 
+// router.put("/", postsCtrl.updateLikes)
+
 router.put("/comments", postsCtrl.updateComment)
 
 router.post("/comments", postsCtrl.postComment)

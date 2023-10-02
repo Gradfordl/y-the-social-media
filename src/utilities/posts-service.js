@@ -22,3 +22,6 @@ export async function deletePost(postId) {
 export async function updatePost(credentials) {
   await postAPI.updatePost(credentials);
  } 
+//  export async function updateLikes(likes) {
+//   await postAPI.updateLikes(likes)
+//  }

@@ -17,8 +17,10 @@ export default function CreateComment ({post, user}) {
     const handleSubmit = async (evt) => {
         evt.preventDefault();
         console.log(" comment button clicked");
+        if (!comment.text) {
+          return alert("Please enter a comment before submitting!")
+        }
         try { 
-
           const createdComment= await CommentsAPI.createComment(comment);
           console.log(createdComment)
           // setComment(createdComment)

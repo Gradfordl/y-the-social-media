@@ -14,6 +14,7 @@ const postSchema = new Schema(
       type: Schema.Types.ObjectId,
       ref: 'User',
     },
+    author: String,
     image: String,
     text: String,
     likes: { type: Number, default: 0 },
