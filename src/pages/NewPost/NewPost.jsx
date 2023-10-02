@@ -24,12 +24,11 @@ const handleSubmit = async (evt) => {
     evt.preventDefault();
     // console.log(" create post form submitted");
     try { 
-
       const postData = { ...post };
       const createdPost = await createPost(postData);
       console.log(createdPost)
       setPost(createdPost)
-      navigate(-1)
+      navigate("/")
     } catch (err) {
       setError(err);
       console.log(error);
@@ -58,7 +57,7 @@ const handleSubmit = async (evt) => {
         </form>
       </div>
       <br />
-      {/* <div><Link to="/profile">Back</Link></div> */}
+      <div><button onClick={() => navigate(-1)}>Back</button></div>
     </div>
   );
 }

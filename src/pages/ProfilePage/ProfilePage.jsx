@@ -28,7 +28,7 @@ export default function ProfilePage({ user, setUser }) {
   async function deletePost(postId) {
     try {
       await postsService.deletePost(postId);
-      alert("post Deleted");
+      window.location.reload()
     } catch (err) {
       console.log(err);
     }

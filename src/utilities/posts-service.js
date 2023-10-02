@@ -11,8 +11,9 @@ export async function getUserPosts() {
   return posts
 }
 //new
-export async function createPost(postData) {
-  const post = await postAPI.create(postData);
+export function createPost(postData) {
+  const post = postAPI.create(postData);
+  return post
 } 
 //delete
 export async function deletePost(postId) {

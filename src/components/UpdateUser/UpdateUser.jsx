@@ -20,7 +20,7 @@ export default function UpdateUser({ user, setUser }) {
     try {
     // console.log(credentials);
       const updatedUser = await usersService.updateUser(credentials);
-      setUser(updatedUser)
+      setUser(updatedUser);
     } catch (err) {
       setError(err);
       console.log(error);

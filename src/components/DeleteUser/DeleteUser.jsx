@@ -1,8 +1,9 @@
 import { useState } from "react";
 import * as usersService from "../../utilities/users-service";
-import { redirect } from "react-router-dom";
+import { useNavigate} from "react-router-dom";
 
 export default function DeleteUser({ user, setUser }) {
+  const navigate = useNavigate()
   const [credentials, setCredentials] = useState({
     email: "",
   });
@@ -15,7 +16,7 @@ export default function DeleteUser({ user, setUser }) {
   const handleLogOut = () => {
     usersService.logOut();
     setUser(null);
-    redirect("/")
+    navigate("/")
   };
   async function handleSubmit(evt) {
     evt.preventDefault();
