@@ -24,7 +24,8 @@ async function handleSubmit(evt) {
     // payload of the JSON Web Token (JWT)
     const user = await usersService.login(credentials);
     setUser(user);
-  } catch {
+  } catch (err) {
+    console.log(err)
     setError('Log In Failed - Try Again');
   }
 }
@@ -33,9 +34,9 @@ return (
   <div> 
     <div className="form-container" >
       <form autoComplete="off" onSubmit={handleSubmit}>
-        <label>Email: </label>
+        <label>Email</label>
         <input type="text" name="email" value={credentials.email} onChange={handleChange} required /> <br/>
-        <label>Password: </label>
+        <label>Password</label>
         <input type="password" name="password" value={credentials.password} onChange={handleChange} required /> <br/>
         <button type="submit">LOG IN</button>
       </form>

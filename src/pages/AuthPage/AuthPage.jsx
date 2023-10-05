@@ -1,14 +1,14 @@
 import SignUpForm from "../../components/SignUpForm/SignUpForm";
 import LoginForm from "../../components/LoginForm/LoginForm";
 
-function AuthPage({setUser}) {
+function AuthPage(props) {
   return (
     <main>
       <h1>Log in to Y</h1>
-      <LoginForm setUser={setUser} />
+      <LoginForm setUser={props.setUser} />
 
       <h3>No account? Sign up below</h3>
-      <SignUpForm setUser={setUser} />
+      <SignUpForm setUser={props.setUser} />
     </main>
   );
 }

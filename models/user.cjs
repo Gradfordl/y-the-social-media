@@ -18,7 +18,7 @@ const userSchema = new Schema(
       minLength: 5,
       required: true,
     },
-    image: {type: String, default: "https://media.istockphoto.com/id/1214428300/vector/default-profile-picture-avatar-photo-placeholder-vector-illustration.jpg?s=612x612&w=0&k=20&c=vftMdLhldDx9houN4V-g3C9k0xl6YeBcoB_Rk6Trce0="}
+    image: {type: String, default: "/images/avatar.jpg"}
   },
   {
     timestamps: true,

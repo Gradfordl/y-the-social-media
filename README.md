@@ -30,6 +30,8 @@
 ## Unsolved Problems
     "Like" functionality is not fully functional yet, there was difficulty getting likes to connect to posts and comments in the database and persisting the incrementing/decrementing of the values. 
 
+    
+
 ## Future Enhancements
     In the coming future, I'd like to implement a few more features to make the app come to life: 
 

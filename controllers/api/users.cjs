@@ -14,6 +14,7 @@ async function create(req, res) {
   try {
     // Add the user to the database
     const user = await User.create(req.body);
+    console.log(user)
     // Yes, we can use res.json to send back just a string
     // The client code needs to take this into consideration (be able to accept string)
     const token = createJWT(user);
@@ -66,7 +67,7 @@ async function update(req, res) {
     const user = await User.findByIdAndUpdate(req.body.id, {name: req.body.name, image: req.body.image, email: req.body.email}, {new: true})
     const token = createJWT(user);
     res.json(token);
-
+    
   } catch (err) {
     console.log(err)
     res.status(400).json("Unable to update")

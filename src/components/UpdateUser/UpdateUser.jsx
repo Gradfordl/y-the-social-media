@@ -1,7 +1,9 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import * as usersService from "../../utilities/users-service";
 
 export default function UpdateUser({ user, setUser }) {
+  const navigate = useNavigate()
     const [credentials, setCredentials] = useState({
         name: user.name,
         id: user._id,
@@ -21,6 +23,7 @@ export default function UpdateUser({ user, setUser }) {
     // console.log(credentials);
       const updatedUser = await usersService.updateUser(credentials);
       setUser(updatedUser);
+      navigate("/profile")
     } catch (err) {
       setError(err);
       console.log(error);
@@ -35,7 +38,7 @@ export default function UpdateUser({ user, setUser }) {
               name="name"
               value={credentials.name}
               onChange={handleChange}
-              required
+
             /> <br/>
             <label>Update Image</label>
             <input
@@ -43,7 +46,7 @@ export default function UpdateUser({ user, setUser }) {
               name="image"
               value={credentials.image}
               onChange={handleChange}
-              required
+
             /><br/>
             <label>Update Email</label>
             <input
@@ -51,7 +54,7 @@ export default function UpdateUser({ user, setUser }) {
               name="email"
               value={credentials.email}
               onChange={handleChange}
-              required
+
             /><br/>
             <button type="submit">
               Submit Changes

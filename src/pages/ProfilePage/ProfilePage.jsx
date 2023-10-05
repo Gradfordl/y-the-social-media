@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom"
 import * as postsService from "../../utilities/posts-service";
 import Profile from "../../components/Profile/Profile";
 import UpdatePost from "../../components/UpdatePost/UpdatePost";
@@ -7,6 +8,7 @@ import CreateComment from "../../components/CreateComment/CreateComment";
 import LikeButton from "../../components/LikeButton/LikeButton";
 
 export default function ProfilePage({ user, setUser }) {
+  const navigate = useNavigate()
   const [posts, setPosts] = useState([]);
   const [toggle, setToggle] = useState(false);
   const [showComment, setShowComment] = useState(false);
@@ -28,7 +30,7 @@ export default function ProfilePage({ user, setUser }) {
   async function deletePost(postId) {
     try {
       await postsService.deletePost(postId);
-      window.location.reload()
+      navigate("/")
     } catch (err) {
       console.log(err);
     }

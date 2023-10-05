@@ -119,7 +119,7 @@ async function postComment(req, res) {
     // console.log("ADDCOMMENT",addComment)
     // const user = await User
     // const token = createJWT(user);
-    res.json("Good job comment function");
+    res.json(addComment);
   } catch (err) {
     console.log(err);
     res.status(400).json("Unable to update");

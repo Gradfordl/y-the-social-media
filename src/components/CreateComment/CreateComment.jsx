@@ -23,7 +23,7 @@ export default function CreateComment ({post, user}) {
         try { 
           const createdComment= await CommentsAPI.createComment(comment);
           console.log(createdComment)
-          // setComment(createdComment)
+          setComment(createdComment)
           navigate("/")
           
         } catch (err) {

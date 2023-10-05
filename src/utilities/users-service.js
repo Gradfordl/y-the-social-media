@@ -9,6 +9,8 @@ export async function signUp(userData) {
 
 export async function updateUser(credentials) {
   const updatedUser = await usersAPI.update(credentials);
+  localStorage.setItem("token", token);
+  return getUser();
 }
 
 export async function login(credentials) {
@@ -19,10 +21,13 @@ export async function login(credentials) {
 
 export function getToken() {
   const token = localStorage.getItem("token");
-
+  
   if (!token) return null;
+  // console.log(token)
+  // console.log(token.split(".")[1])
 
   const payload = JSON.parse(atob(token.split(".")[1]));
+  // decodeURIComponent(token.split(".")[1])
 
   if (payload.exp < Date.now() / 1000) {
     localStorage.removeItem("token");

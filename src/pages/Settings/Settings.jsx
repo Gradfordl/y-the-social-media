@@ -5,7 +5,7 @@ import UpdateUser from "../../components/UpdateUser/UpdateUser";
 
 
 
-export default function SettingsPage({user, setUser}) {
+export default function Settings({user, setUser}) {
   const navigate = useNavigate();
   
   useEffect(() => {
@@ -17,7 +17,7 @@ export default function SettingsPage({user, setUser}) {
     <h1>EDIT ACCOUNT</h1>
     <UpdateUser user={user} setUser={setUser} />
     <h3>DELETE ACCOUNT</h3>
-    <DeleteUser/>
+    <DeleteUser user={user}/>
     <div><button onClick={() => navigate(-1)}>Back</button></div>
   </div>
     );
