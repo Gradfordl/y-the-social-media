@@ -1,9 +1,14 @@
 # Y - The Social Media "Y ask that stuff?"
+https://y-the-social-media.onrender.com/
 ## Introduction
-    Welcome to Y!!! Y is a social media app inspired by Twitter's rebrand to X. Created by Lauren Gradford https://linkedin.com/in/gradfordl as a demonstration full-stack single page application showcasing React. 
+   ### Welcome to Y!!! Y is a social media app inspired by Twitter's rebrand to X. Created by Lauren Gradford https://linkedin.com/in/gradfordl as a demonstration full-stack single-page application showcasing React. 
 
-    ### Screenshot
-![Image text](/path/to/the/screenshot.png)
+
+### Y - Home page 
+<img width="1128" alt="Screenshot 2023-10-02 at 11 40 51 PM" src="https://github.com/Gradfordl/y-the-social-media/assets/137221245/73f07bb9-2b35-4b8c-a580-d052c846b818">
+
+### Y - User profile
+<img width="777" alt="Screenshot 2023-10-02 at 11 41 25 PM" src="https://github.com/Gradfordl/y-the-social-media/assets/137221245/1958b22c-aa52-43a2-9c9c-08f574951696">
 
 ## Technologies Used
     * JavaScript
@@ -30,10 +35,8 @@
 ## Unsolved Problems
     "Like" functionality is not fully functional yet, there was difficulty getting likes to connect to posts and comments in the database and persisting the incrementing/decrementing of the values. 
 
-    
-
 ## Future Enhancements
-    In the coming future, I'd like to implement a few more features to make the app come to life: 
+    In the future, I'd like to implement a few more features to make the app come to life: 
 
     * The ability to "add" or "follow" other users, and have their posts be the posts to populate on the home page. 
 
